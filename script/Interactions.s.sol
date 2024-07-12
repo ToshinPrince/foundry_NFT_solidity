@@ -19,7 +19,7 @@ contract MintBasicNft is Script {
 
     function mintNftOnContract(address contractAddress) public {
         vm.startBroadcast();
-        BasicNft(contractAddress).mintNFT(PUG);
+        BasicNft(contractAddress).mintNft(PUG);
         vm.stopBroadcast();
     }
 }
