@@ -31,7 +31,7 @@ contract BasicNftTest is Test {
 
     function testCanMintAndHaveABalance() public {
         vm.prank(USER);
-        basicNft.mintNFT(PUG);
+        basicNft.mintNft(PUG);
 
         assert(basicNft.balanceOf(USER) == 1);
         assert(
@@ -65,7 +65,7 @@ contract BasicNftTest is Test {
     //         string memory tokenUri2 = "https://example.com/nft2";
 
     //         vm.prank(owner);
-    //         basicNft.mintNFT(tokenUri1);
+    //         basicNft.mintNft(tokenUri1);
     //         assertEq(basicNft.balanceOf(owner), 1);
     //         assertEq(basicNft.tokenURI(0), tokenUri1);
 
@@ -78,13 +78,13 @@ contract BasicNftTest is Test {
     //     function testFailMintNFTWithInvalidTokenUri() public {
     //         string memory invalidTokenUri = "";
     //         vm.prank(owner);
-    //         basicNft.mintNFT(invalidTokenUri);
+    //         basicNft.mintNft(invalidTokenUri);
     //     }
 
     //     function testTransferNFT() public {
     //         string memory tokenUri = "https://example.com/nft";
     //         vm.prank(owner);
-    //         basicNft.mintNFT(tokenUri);
+    //         basicNft.mintNft(tokenUri);
 
     //         vm.prank(owner);
     //         basicNft.transferFrom(owner, user1, 0);
@@ -95,7 +95,7 @@ contract BasicNftTest is Test {
     //     function testFailTransferNFTWithUnauthorizedUser() public {
     //         string memory tokenUri = "https://example.com/nft";
     //         vm.prank(owner);
-    //         basicNft.mintNFT(tokenUri);
+    //         basicNft.mintNft(tokenUri);
 
     //         vm.prank(user1);
     //         basicNft.transferFrom(owner, user2, 0);
@@ -127,13 +127,13 @@ contract BasicNftTest is Test {
     //     }
 
     //     function testMintNft() public {
-    //         basicNft.mintNFT(TEST_TOKEN_URI);
+    //         basicNft.mintNft(TEST_TOKEN_URI);
     //         assertEq(basicNft.tokenURI(0), TEST_TOKEN_URI);
     //         assertEq(basicNft.ownerOf(0), owner);
     //     }
 
     //     function testTokenUri() public {
-    //         basicNft.mintNFT(TEST_TOKEN_URI);
+    //         basicNft.mintNft(TEST_TOKEN_URI);
     //         string memory tokenUri = basicNft.tokenURI(0);
     //         assertEq(tokenUri, TEST_TOKEN_URI);
     //     }
@@ -144,8 +144,8 @@ contract BasicNftTest is Test {
     //     }
 
     //     function testMultipleMints() public {
-    //         basicNft.mintNFT(TEST_TOKEN_URI);
-    //         basicNft.mintNFT(TEST_TOKEN_URI_2);
+    //         basicNft.mintNft(TEST_TOKEN_URI);
+    //         basicNft.mintNft(TEST_TOKEN_URI_2);
 
     //         assertEq(basicNft.tokenURI(0), TEST_TOKEN_URI);
     //         assertEq(basicNft.tokenURI(1), TEST_TOKEN_URI_2);
@@ -156,7 +156,7 @@ contract BasicNftTest is Test {
 
     //     function testMintingIncreasesCounter() public {
     //         uint256 initialCounter = basicNft.s_tokenCounter();
-    //         basicNft.mintNFT(TEST_TOKEN_URI);
+    //         basicNft.mintNft(TEST_TOKEN_URI);
     //         uint256 newCounter = basicNft.s_tokenCounter();
     //         assertEq(newCounter, initialCounter + 1);
     //     }
