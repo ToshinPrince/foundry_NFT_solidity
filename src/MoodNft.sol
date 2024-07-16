@@ -9,6 +9,13 @@ contract MoodNft is ERC721 {
     string private s_sadSvgImageUri;
     string private s_happySvgImageUri;
 
+    enum Mood {
+        HAPPY,
+        SAD
+    }
+
+    mapping(uint256 => Mood) private s_tokenIdToMood;
+
     constructor(
         string memory sadSvgImageUri,
         string memory happySvgImageUri
@@ -20,8 +27,18 @@ contract MoodNft is ERC721 {
 
     function mintNft() public {
         _safeMint(msg.sender, s_tokenCounter);
+        s_tokenIdToMood[s_tokenCounter] = Mood.HAPPY;
         s_tokenCounter++;
     }
 
-    function tokenURI() public view override returns (string memory) {}
+    function tokenURI() public view override returns (string memory) {
+        string memory tokenMetaData = abi.encodePacked(
+            '{"name": "',
+            name(),
+            '","description":"An NFT that reflects the mood of the owner, 100% on Chain!", ',
+            ' "attributes": [{"trait_type": "moodiness", "value": 100}], "image": "',
+            imageURI,
+            '"}'
+        );
+    }
 }
