@@ -9,8 +9,8 @@ contract MoodNft is ERC721 {
     error MoodNft__CantFlipMoodIfNotOwner();
 
     uint256 private s_tokenCounter;
-    string private s_sadSvgImageUri;
-    string private s_happySvgImageUri;
+    string private s_sadSvgUri;
+    string private s_happySvgUri;
 
     enum Mood {
         HAPPY,
@@ -24,8 +24,8 @@ contract MoodNft is ERC721 {
         string memory happySvgImageUri
     ) ERC721("Mood NFT", "MN") {
         s_tokenCounter = 0;
-        s_sadSvgImageUri = sadSvgImageUri;
-        s_happySvgImageUri = happySvgImageUri;
+        s_sadSvgUri = sadSvgImageUri;
+        s_happySvgUri = happySvgImageUri;
     }
 
     function mintNft() public {
@@ -56,11 +56,15 @@ contract MoodNft is ERC721 {
     function tokenURI(
         uint256 tokenId
     ) public view override returns (string memory) {
-        string memory imageURI;
-        if (s_tokenIdToMood[tokenId] == Mood.HAPPY) {
-            imageURI = s_happySvgImageUri;
-        } else {
-            imageURI = s_sadSvgImageUri;
+        string memory imageURI = s_happySvgUri;
+        // if (s_tokenIdToMood[tokenId] == Mood.HAPPY) {
+        //     imageURI = s_happySvgUri;
+        // } else {
+        //     imageURI = s_sadSvgUri;
+        // }
+
+        if (s_tokenIdToMood[tokenId] == Mood.SAD) {
+            imageURI = s_sadSvgUri;
         }
 
         return
